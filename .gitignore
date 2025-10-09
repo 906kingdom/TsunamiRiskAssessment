@@ -39,12 +39,6 @@ Thumbs.db
 .env
 .env.*
 
-# Project data/artifacts (kept out of Git)
-data/raw/
-data/processed/
-models/**
-reports/**
-
 # Allow keep files
 !data/**/.gitkeep
 !models/**/.gitkeep
