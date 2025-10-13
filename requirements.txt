@@ -1,3 +1,5 @@
 kagglehub==0.3.13
 pandas==2.3.3
 fuzzywuzzy==0.18.0
+matplotlib==3.10.7
+seaborn==0.13.2
