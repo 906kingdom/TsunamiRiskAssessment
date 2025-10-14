@@ -1,0 +1,2 @@
+timestamp,model,cv_splits,scaler,class_weight,test_accuracy,test_precision,test_recall,test_f1,test_roc_auc,train_accuracy,train_precision,train_recall,train_f1,train_roc_auc,train_test_gap_accuracy,notes
+2025-10-14 16:06:48,Logistic Regression,5,StandardScaler,balanced,0.813294136861016,0.7099787128866876,0.8914207650273223,0.789249533146592,0.8275305579522577,0.8158558466453674,0.7063757687842922,0.9013222694461309,0.7919701876953302,0.8314131202875673,0.0025617097843513292,
