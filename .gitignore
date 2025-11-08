@@ -4,6 +4,7 @@ __pycache__/
 *.pyo
 *.pyd
 *.so
+/anaconda_projects/
 
 # Virtual environments
 .venv/
