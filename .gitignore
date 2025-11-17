@@ -44,3 +44,6 @@ Thumbs.db
 !data/**/.gitkeep
 !models/**/.gitkeep
 !reports/**/.gitkeep
+
+
+notebooks/catboost_info/
