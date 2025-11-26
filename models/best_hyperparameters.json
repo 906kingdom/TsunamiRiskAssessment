@@ -1,0 +1,66 @@
+{
+    "timestamp": "2025-11-17 03:45:11",
+    "catboost": {
+        "best_params": {
+            "subsample": 0.8,
+            "random_strength": 0.5,
+            "min_data_in_leaf": 3,
+            "learning_rate": 0.05,
+            "l2_leaf_reg": 3,
+            "iterations": 100,
+            "depth": 4
+        },
+        "best_f2_score": 0.7477013937125265,
+        "test_metrics": {
+            "accuracy": 0.8300000000000001,
+            "precision": 0.5839404074186682,
+            "recall": 0.8053763440860214,
+            "f1": 0.6759699248120301,
+            "f2": 0.7477013937125265,
+            "roc_auc": 0.8212119418511843,
+            "false_negative_rate": 19.480519480519483
+        }
+    },
+    "logistic_regression": {
+        "best_params": {
+            "solver": "saga",
+            "penalty": "l1",
+            "max_iter": 1000,
+            "class_weight": "balanced",
+            "C": 0.1
+        },
+        "best_f2_score": 0.7214536269049647,
+        "test_metrics": {
+            "accuracy": 0.7728571428571429,
+            "precision": 0.49333121632309174,
+            "recall": 0.8187096774193549,
+            "f1": 0.6139156551186742,
+            "f2": 0.7214536269049647,
+            "roc_auc": 0.7894382415453738,
+            "false_negative_rate": 18.181818181818183
+        }
+    },
+    "lightgbm": {
+        "best_params": {
+            "subsample": 0.7,
+            "reg_lambda": 0.1,
+            "reg_alpha": 0.5,
+            "num_leaves": 15,
+            "n_estimators": 400,
+            "min_child_samples": 20,
+            "max_depth": 4,
+            "learning_rate": 0.01,
+            "colsample_bytree": 0.9
+        },
+        "best_f2_score": 0.7608770052023092,
+        "test_metrics": {
+            "accuracy": 0.8300000000000001,
+            "precision": 0.5828030803608971,
+            "recall": 0.8245161290322581,
+            "f1": 0.6823498754766361,
+            "f2": 0.7608770052023092,
+            "roc_auc": 0.8280045198956121,
+            "false_negative_rate": 17.532467532467532
+        }
+    }
+}
