@@ -1,5 +1,5 @@
 {
-    "timestamp": "2025-11-27 18:40:21",
+    "timestamp": "2025-11-27 20:44:12",
     "catboost": {
         "best_params": {
             "subsample": 0.8,
@@ -65,17 +65,37 @@
     },
     "tabpfn": {
         "best_params": {
-            "threshold": 0.10242949426174164
+            "threshold": 0.2
         },
-        "best_f2_score": 0.7733267801222119,
+        "best_f2_score": 0.7459462781977994,
         "test_metrics": {
-            "accuracy": 0.7285714285714284,
-            "precision": 0.44636383300886867,
-            "recall": 0.9483870967741936,
-            "f1": 0.6063315127889768,
-            "f2": 0.7733267801222119,
-            "roc_auc": 0.9033998583048598,
-            "false_negative_rate": 5.161290322580645
+            "accuracy": 0.8142857142857143,
+            "precision": 0.5531311417462,
+            "recall": 0.8180645161290323,
+            "f1": 0.6593451980118648,
+            "f2": 0.7459462781977994,
+            "roc_auc": 0.9034294528594617,
+            "false_negative_rate": 18.193548387096776
+        }
+    },
+    "neural_network_mlp": {
+        "best_params": {
+            "patience": 10,
+            "learning_rate": 0.01,
+            "hidden_dim": 128,
+            "epochs": 150,
+            "dropout_rate": 0.5,
+            "batch_size": 64
+        },
+        "best_f2_score": 0.7508576321598021,
+        "test_metrics": {
+            "accuracy": 0.8142857142857143,
+            "precision": 0.5538547007184158,
+            "recall": 0.8249462365591398,
+            "f1": 0.6621824520558698,
+            "f2": 0.7508576321598021,
+            "roc_auc": 0.8181695319576349,
+            "false_negative_rate": 17.532467532467532
         }
     }
 }
