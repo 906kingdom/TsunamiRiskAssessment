@@ -40,25 +40,25 @@ Given earthquake parameters (magnitude, depth, location, intensity measures), pr
 
 ## 🏆 Key Findings
 
-### Best Performing Model: **LightGBM (Optimized)**
+### Best Performing Model: **TabPFN (Optimized)**
 
 | Metric                        | Value  |
 | ----------------------------- | ------ |
-| **F2 Score**            | 0.7609 |
-| **Recall**              | 82.45% |
-| **Accuracy**            | 83.00% |
-| **ROC-AUC**             | 0.828  |
-| **False Negative Rate** | 17.53% |
+| **F2 Score**            | 0.7733 |
+| **Recall**              | 94.84% |
+| **Accuracy**            | 72.86% |
+| **ROC-AUC**             | 0.9034 |
+| **False Negative Rate** | 5.16%  |
 
 ### Model Comparison (Ranked by F2 Score)
 
 | Rank | Model                      | F2 Score | Recall | Accuracy | False Negative Rate |
 | ---- | -------------------------- | -------- | ------ | -------- | ------------------- |
-| 1    | LightGBM (Optimized)       | 0.7609   | 82.45% | 83.00%   | 17.53%              |
-| 2    | Neural Network (MLP) (Opt) | 0.7509   | 82.49% | 81.43%   | 17.53%              |
+| 1    | TabPFN (Optimized)         | 0.7733   | 94.84% | 72.86%   | 5.16%               |
+| 2    | LightGBM (Optimized)       | 0.7609   | 82.45% | 83.00%   | 17.53%              |
 | 3    | CatBoost (Optimized)       | 0.7477   | 80.54% | 83.00%   | 19.48%              |
-| 4    | TabPFN (Optimized)         | 0.7459   | 81.81% | 81.43%   | 18.19%              |
-| 5    | Logistic Regression (Opt) | 0.7215   | 81.87% | 77.29%   | 18.18%              |
+| 4    | Neural Network (MLP) (Opt) | 0.7413   | 82.52% | 80.00%   | 17.53%              |
+| 5    | Logistic Regression (Opt)  | 0.7215   | 81.87% | 77.29%   | 18.18%              |
 
 ### Key Insights
 
@@ -228,32 +228,22 @@ Neural Network: hidden_dim, dropout_rate, learning_rate, batch_size, epochs
 
 ## 📈 Models & Results
 
-### Best Model: LightGBM (Optimized)
+### Best Model: TabPFN (Optimized)
 
 ```python
-# Optimized Hyperparameters
-{
-    'subsample': 0.7,
-    'reg_lambda': 0.1,
-    'reg_alpha': 0.5,
-    'num_leaves': 15,
-    'n_estimators': 400,
-    'min_child_samples': 20,
-    'max_depth': 4,
-    'learning_rate': 0.01,
-    'colsample_bytree': 0.9
-}
+# Optimized threshold for classification
+threshold = 0.1021
 ```
 
 ### Performance Metrics (All Optimized Models)
 
-| Model               | Accuracy | Precision | Recall           | F1    | F2              | ROC-AUC | FN Rate          | Gap             |
-| ------------------- | -------- | --------- | ---------------- | ----- | --------------- | ------- | ---------------- | --------------- |
-| LightGBM            | 83.00%   | 58.28%    | 82.45%           | 0.682 | **0.761** | 0.828   | **17.53%** | 5.14%           |
-| Neural Network (MLP)| 81.43%   | 55.39%    | **82.49%** | 0.662 | 0.751           | 0.818   | **17.53%** | 2.39%           |
-| CatBoost            | 83.00%   | 58.39%    | 80.54%           | 0.676 | 0.748           | 0.821   | 19.48%           | 2.93%           |
-| TabPFN              | 81.43%   | 55.31%    | 81.81%           | 0.659 | 0.746           | **0.903** | 18.19%           | 4.57%           |
-| Logistic Regression | 77.29%   | 49.33%    | 81.87%           | 0.614 | 0.722           | 0.789   | 18.18%           | **0.39%** |
+| Model                | Accuracy | Precision | Recall | F1    | F2    | ROC-AUC | FN Rate | Gap   |
+| -------------------- | -------- | --------- | ------ | ----- | ------| ------- | ------- | ----- |
+| TabPFN               | 72.86%   | 44.64%    | 94.84% | 0.606 | 0.773 | 0.903   | 5.16%   | 3.18% |
+| LightGBM             | 83.00%   | 58.28%    | 82.45% | 0.683 | 0.761 | 0.828   | 17.53%  | 5.14% |
+| CatBoost             | 83.00%   | 58.39%    | 80.54% | 0.677 | 0.748 | 0.821   | 19.48%  | 2.93% |
+| Neural Network (MLP) | 80.00%   | 53.24%    | 82.52% | 0.647 | 0.741 | 0.809   | 17.53%  | 1.00% |
+| Logistic Regression  | 77.29%   | 49.33%    | 81.87% | 0.616 | 0.722 | 0.789   | 18.18%  | 0.39% |
 
 ### Feature Importance (via Permutation)
 
