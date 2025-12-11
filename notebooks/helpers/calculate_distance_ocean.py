@@ -1,6 +1,6 @@
 from global_ddm import globe
 
-def get_distance_to_coast_ddm(latitude, longitude):
+def get_distance_to_ocean_ddm(latitude, longitude):
     """
     global_ddm kütüphanesini kullanarak bir noktadan en yakın kıyıya 
     (kara veya su) olan mesafeyi yaklaşık olarak hesaplar.
