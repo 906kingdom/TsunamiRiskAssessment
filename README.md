@@ -65,7 +65,7 @@ Given earthquake parameters (magnitude, depth, location, intensity measures), pr
 1. **Magnitude is the strongest predictor** (correlation: 0.459 with tsunami occurrence)
 2. **Shallow earthquakes are more tsunamigenic** — depth shows negative correlation (-0.167)
 3. **Magnitude × Depth interaction is crucial** — shallow + high magnitude = highest risk
-4. **Distance to coastline** is a meaningful engineered feature (correlation: -0.14)
+4. **Distance to ocean** is a meaningful engineered feature (correlation: -0.14)
 5. **Station coverage features (nst, dmin)** are temporal artifacts and should be excluded
 
 ---
@@ -97,7 +97,7 @@ TsunamiRiskAssessment/
 │   ├── 04_G_NeuralNetwork.ipynb        # PyTorch MLP implementation
 │   ├── 05_feature_importance_analysis.ipynb # Permutation importance
 │   ├── 06_hyperparameter_optimization.ipynb # RandomizedSearchCV tuning
-│   ├── calculate_distance_coastline.py  # Coastline distance utility
+│   ├── calculate_distance_ocean.py  # ocean distance utility
 │   ├── calculate_ocean.py              # Ocean detection utility
 │   └── data_merge.ipynb                # Dataset merging & validation
 │
@@ -144,7 +144,7 @@ TsunamiRiskAssessment/
 
 | Feature                  | Description                                  | Importance                |
 | ------------------------ | -------------------------------------------- | ------------------------- |
-| `distance_to_coast_km` | Distance from epicenter to nearest coastline | High (correlation: -0.14) |
+| `distance_to_ocean_km` | Distance from epicenter to nearest ocean | High (correlation: -0.14) |
 | `month_number`         | Absolute month number since 2000             | Low (discarded)           |
 
 ### Dataset Statistics
@@ -182,7 +182,7 @@ The original dataset had a **data collection artifact** where Year was strongly 
 
 ### 3. Feature Engineering
 
-- **Created**: `distance_to_coast_km` using coastline distance calculation
+- **Created**: `distance_to_ocean_km` using ocean distance calculation
 - **Dropped**: `nst`, `dmin` (temporal artifacts), `Year`, `Month` (leakage risk), `latitude`, `longitude` (replaced by distance feature)
 - **Scaling**: Two-step pipeline (PowerTransformer + StandardScaler) to handle skewed distributions and meaningful zeros
 
@@ -252,7 +252,7 @@ threshold = 0.1021
 | 1    | `magnitude`            | 0.285      |
 | 2    | `depth`                | 0.142      |
 | 3    | `sig`                  | 0.098      |
-| 4    | `distance_to_coast_km` | 0.071      |
+| 4    | `distance_to_ocean_km` | 0.071      |
 | 5    | `cdi`                  | 0.056      |
 | 6    | `mmi`                  | 0.034      |
 
@@ -260,23 +260,23 @@ threshold = 0.1021
 
 ## 🛠️ Feature Engineering
 
-### Distance to Coastline
+### Distance to ocean
 
 A custom feature was engineered to capture the relationship between earthquake location and tsunami potential:
 
 ```python
-from calculate_distance_coastline import get_distance_to_coast_ddm
+from calculate_distance_ocean import get_distance_to_ocean_ddm
 from calculate_ocean import is_ocean
 
-# Calculate distance to nearest coastline (0 if in ocean)
-df["distance_to_coast_km"] = df.apply(
-    lambda r: get_distance_to_coast_ddm(r["latitude"], r["longitude"]) 
+# Calculate distance to nearest ocean (0 if in ocean)
+df["distance_to_ocean_km"] = df.apply(
+    lambda r: get_distance_to_ocean_ddm(r["latitude"], r["longitude"]) 
     if not is_ocean(r["latitude"], r["longitude"]) else 0, 
     axis=1
 )
 ```
 
-**Result**: Strong negative correlation (-0.14) with tsunami occurrence — earthquakes closer to coast are more likely to generate tsunamis.
+**Result**: Strong negative correlation (-0.14) with tsunami occurrence — earthquakes closer to ocean are more likely to generate tsunamis.
 
 ### Scaling Pipeline
 
